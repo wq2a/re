@@ -27,19 +27,23 @@ import java.util.Map;
 import java.util.HashMap;
 import re.ta.Monitor;
 import re.ta.Path;
+import re.ta.MasterClock;
 
 public class TA {
 
     public static void main(String[] args){
         Monitor m = new Monitor();
-
+        System.out.printf("%-15s%-15s%-30s\n","Source","Target","Requirement");
         for(Map.Entry<String,HashMap<String,ArrayList<Path>>> source:m.getStates().entrySet()){
-            
-            for(Map.Entry<String,ArrayList<Path>> target:source.getValue().entrySet()){
-                System.out.println(source.getKey()+"->"+target.getKey());
-                System.out.println(target.getValue().size());
+            for(Map.Entry<String,ArrayList<Path>> target:source.getValue().entrySet()){                
+                for(Path p:target.getValue()){
+                    System.out.printf("%-15s%-15s%-30s\n",source.getKey(),target.getKey(),p.toString());
+                }
             }
             System.out.println();
         }
+
+        MasterClock c = new MasterClock();
     }
+
 }

@@ -2,9 +2,9 @@ package re.ta;
 
 public class Path{
 
-	private String action;
+	private String action = "";
 	private boolean resetClock = false;
-	private String condition;
+	private String condition = "";
 	/*
 	Path(String action,target,resetClock,condition){
 		this.action = action;
